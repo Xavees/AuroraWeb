@@ -16,7 +16,7 @@ type CircleMember = {
 const familyMembers: CircleMember[] = [
   {
     id: 1,
-    name: "Carlos Souza",
+    name: "Xavees",
     role: "Pai",
     initials: "CS",
     lastLocation: "Av. Paulista, São Paulo",
@@ -25,7 +25,7 @@ const familyMembers: CircleMember[] = [
   },
   {
     id: 2,
-    name: "Mariana Souza",
+    name: "Jill Valentine ",
     role: "Mãe",
     initials: "MS",
     lastLocation: "Rua das Flores, São Paulo",
@@ -34,7 +34,7 @@ const familyMembers: CircleMember[] = [
   },
   {
     id: 3,
-    name: "Lucas Souza",
+    name: "La ele",
     role: "Filho",
     initials: "LS",
     lastLocation: "Colégio Aurora, São Paulo",
