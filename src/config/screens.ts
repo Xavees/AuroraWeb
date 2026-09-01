@@ -1,7 +1,7 @@
 import type { Screen } from "../types/app";
 
 // Rótulos exibidos no seletor temporário de telas.
-export const screenNames: Record<Screen, string> = {
+export const nomesTelas: Record<Screen, string> = {
   home: "Início",
   login: "Login",
   signup: "Criar conta",
