@@ -1,4 +1,5 @@
 import type { Navigate, Theme } from "../../types/app";
+import { LogoAurora } from "../ui/LogoAurora";
 
 type HeaderProps = {
   navigate: Navigate;
@@ -11,7 +12,7 @@ export function Header({ navigate, theme, toggleTheme }: HeaderProps) {
   return (
     <header className="site-header">
       <button className="logo" onClick={() => navigate("home")}>
-        <span className="logo-mark">A</span>
+        <LogoAurora />
         <span>Aurora</span>
       </button>
 

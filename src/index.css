@@ -2,10 +2,10 @@
 
 :root {
   /* ================================================================
-     AQUI VOCÊ VAI TROCAR AS CORES DE TODO O PROJETO.
-     Modifique apenas estas variáveis para alterar a identidade visual.
+     Modificação de Cores do Projeto
+     Lembrar de verificar com o Doc do Isaias
      ================================================================ */
-  /* Paleta inspirada no site do Life360 (consultado em agosto de 2026). */
+  /* Paleta inspirada no site do Life360.*/
   --color-primary: #762eeb;
   --color-primary-dark: #5d22c8;
   --color-primary-soft: #eee6ff;

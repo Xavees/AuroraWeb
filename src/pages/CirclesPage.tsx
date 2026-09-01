@@ -34,7 +34,7 @@ const familyMembers: CircleMember[] = [
   },
   {
     id: 3,
-    name: "La ele",
+    name: "Kobyy",
     role: "Filho",
     initials: "LS",
     lastLocation: "Colégio Aurora, São Paulo",

@@ -1,35 +1,29 @@
 import { useEffect, useState } from "react";
 import { Footer } from "./components/layout/Footer";
 import { Header } from "./components/layout/Header";
-import { ScreenPicker } from "./components/layout/ScreenPicker";
-import { screenNames } from "./config/screens";
-import {
-  FriendRequestPage,
-  PlansPage,
-  ProfilePage,
-} from "./pages/AccountPages";
-import {
-  ForgotPasswordPage,
-  LoginPage,
-  OtpPage,
-  SignupPage,
-} from "./pages/AuthPages";
-import { HomePage } from "./pages/HomePage";
+import { SeletorTelas } from "./components/layout/SeletorTelas";
+import { nomesTelas } from "./config/screens";
 import { CirclesPage } from "./pages/CirclesPage";
-import {
-  ContactsPage,
-  DevicesPage,
-  HistoryPage,
-} from "./pages/MonitoringPages";
+import { ContactsPage } from "./pages/ContactsPage";
+import { DevicesPage } from "./pages/DevicesPage";
+import { ForgotPasswordPage } from "./pages/ForgotPasswordPage";
+import { FriendRequestPage } from "./pages/FriendRequestPage";
+import { HistoryPage } from "./pages/HistoryPage";
+import { HomePage } from "./pages/HomePage";
+import { LoginPage } from "./pages/LoginPage";
+import { OtpPage } from "./pages/OtpPage";
+import { PlansPage } from "./pages/PlansPage";
+import { ProfilePage } from "./pages/ProfilePage";
+import { SignupPage } from "./pages/SignupPage";
 import type { Screen, Theme } from "./types/app";
 import "./App.css";
 
 // Componente principal: controla apenas navegação, tema e estrutura global.
 function App() {
   const [screen, setScreen] = useState<Screen>(() => {
-    // AQUI VOCÊ VAI DESENVOLVER: substitua esta navegação por React Router.
-    const selectedScreen = window.location.hash.replace("#/", "") as Screen;
-    return selectedScreen in screenNames ? selectedScreen : "home";
+    //  substituir esta navegação por React Router.
+    const telaSelecionada = window.location.hash.replace("#/", "") as Screen;
+    return telaSelecionada in nomesTelas ? telaSelecionada : "home";
   });
 
   const [theme, setTheme] = useState<Theme>(() => {
@@ -65,7 +59,7 @@ function App() {
       <Header navigate={navigate} theme={theme} toggleTheme={toggleTheme} />
 
       <main className="main-content">
-        <CurrentPage
+        <PaginaAtual
           screen={screen}
           theme={theme}
           navigate={navigate}
@@ -74,12 +68,12 @@ function App() {
       </main>
 
       <Footer />
-      <ScreenPicker screen={screen} navigate={navigate} />
+      <SeletorTelas telaAtual={screen} navegar={navigate} />
     </div>
   );
 }
 
-type CurrentPageProps = {
+type PropriedadesPaginaAtual = {
   screen: Screen;
   theme: Theme;
   navigate: (screen: Screen) => void;
@@ -87,12 +81,12 @@ type CurrentPageProps = {
 };
 
 // Renderiza a página selecionada pelo protótipo.
-function CurrentPage({
+function PaginaAtual({
   screen,
   theme,
   navigate,
   toggleTheme,
-}: CurrentPageProps) {
+}: PropriedadesPaginaAtual) {
   switch (screen) {
     case "login":
       return <LoginPage navigate={navigate} />;

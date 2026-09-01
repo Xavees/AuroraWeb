@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { LogoAurora } from "./LogoAurora";
 
 type CardProps = { title: string; subtitle: string; children: ReactNode };
 
@@ -7,7 +8,7 @@ export function AuthCard({ title, subtitle, children }: CardProps) {
   return (
     <section className="auth-card">
       <div className="auth-heading">
-        <span className="mini-mark">A</span>
+        <LogoAurora tamanho="grande" />
         <h1>{title}</h1>
         <p>{subtitle}</p>
       </div>
