@@ -25,6 +25,7 @@ Atualmente, o projeto utiliza:
 * **Vite**
 * **CSS**
 * **ESLint**
+* **Nest.js**
 
 Novas tecnologias poderão ser adicionadas conforme o desenvolvimento avançar.
 
