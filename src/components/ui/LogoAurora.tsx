@@ -1,3 +1,4 @@
+// foto temporaria, a logo nova ja foi escolhida !
 import iconeAurora from "../../assets/iconColorido.png";
 
 type PropriedadesLogoAurora = {

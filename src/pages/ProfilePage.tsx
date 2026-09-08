@@ -22,6 +22,7 @@ export function ProfilePage({
       wide
     >
       <div className="profile-grid">
+        {/* // foto temporaria, a logo nova ja foi escolhida ! */}
         <div className="profile-photo">
           <span>XA</span>
           <button>Alterar foto</button>
@@ -73,7 +74,7 @@ export function ProfilePage({
         <button className="secondary">Alterar senha</button>
         <button className="danger">Excluir conta</button>
       </div>
-      {/* AQUI VOCÊ VAI DESENVOLVER: perfil, preferências e exclusão da conta. */}
+      {/* AQUI VOCÊ VAI DESENVOLVER COM API REST: carregar e atualizar perfil, preferências e exclusão da conta. */}
     </PageCard>
   );
 }

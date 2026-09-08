@@ -18,7 +18,7 @@ export function OtpPage() {
             />
           ))}
         </div>
-        {/* AQUI VOCÊ VAI DESENVOLVER: validação, expiração e reenvio do OTP. */}
+        {/* AQUI VOCÊ VAI DESENVOLVER COM API REST: validação, expiração e reenvio do OTP. */}
         <button className="primary wide">Confirmar código</button>
         <button className="link centered" type="button">
           Reenviar código

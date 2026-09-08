@@ -20,7 +20,7 @@ export function FriendRequestPage({ navigate }: { navigate: Navigate }) {
         </div>
         <Field label="Telefone" type="tel" placeholder="(00) 00000-0000" />
         <Field label="Nome" placeholder="Nome do contato" />
-        {/* AQUI VOCÊ VAI DESENVOLVER: busca e envio da solicitação. */}
+        {/* AQUI VOCÊ VAI DESENVOLVER COM API REST: busca e envio da solicitação. */}
         <button className="primary wide">Enviar solicitação</button>
       </form>
     </PageCard>

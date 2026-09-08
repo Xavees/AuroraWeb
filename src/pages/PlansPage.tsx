@@ -36,7 +36,7 @@ export function PlansPage({ navigate }: { navigate: Navigate }) {
           ]}
         />
       </div>
-      {/* AQUI VOCÊ VAI DESENVOLVER: contratação, pagamento e troca de plano. */}
+      {/* AQUI VOCÊ VAI DESENVOLVER COM API REST: contratação, pagamento e troca de plano. */}
     </PageCard>
   );
 }

@@ -23,7 +23,7 @@ export function SignupPage({ navigate }: { navigate: Navigate }) {
           placeholder="Repita sua senha"
         />
         <Check label="Li e aceito os Termos de Uso e Privacidade" />
-        {/* AQUI VOCÊ VAI DESENVOLVER: cadastro, regras de senha e termos. */}
+        {/* AQUI VOCÊ VAI DESENVOLVER COM API REST: cadastro, regras de senha e termos. */}
         <button className="primary wide">Criar minha conta</button>
         <p className="form-note">
           Já possui uma conta?{" "}

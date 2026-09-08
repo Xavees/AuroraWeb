@@ -33,7 +33,7 @@ export function ContactsPage({ navigate }: { navigate: Navigate }) {
       >
         + Adicionar contato
       </button>
-      {/* AQUI VOCÊ VAI DESENVOLVER: busca, listagem e status dos contatos. */}
+      {/* AQUI VOCÊ VAI DESENVOLVER COM API REST: busca, listagem e status dos contatos. */}
     </PageCard>
   );
 }

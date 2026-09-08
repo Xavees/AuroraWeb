@@ -128,7 +128,7 @@ export function CirclesPage({ navigate }: { navigate: Navigate }) {
         </section>
       </div>
 
-      {/* AQUI VOCÊ VAI DESENVOLVER: buscar círculos, papéis e localizações no backend. */}
+      {/* AQUI VOCÊ VAI DESENVOLVER COM API REST: buscar círculos, papéis e localizações. */}
     </PageCard>
   );
 }

@@ -17,7 +17,7 @@ export function ForgotPasswordPage({ navigate }: { navigate: Navigate }) {
         }}
       >
         <Field label="E-mail" type="email" placeholder="voce@exemplo.com" />
-        {/* AQUI VOCÊ VAI DESENVOLVER: envio real do código de recuperação. */}
+        {/* AQUI VOCÊ VAI DESENVOLVER COM API REST: envio do código de recuperação. */}
         <button className="primary wide">Enviar código</button>
         <button
           className="link centered"

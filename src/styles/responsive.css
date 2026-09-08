@@ -1,0 +1,96 @@
+/* Responsividade para celulares e telas menores. */
+@media (max-width: 760px) {
+  .site-header {
+    height: 66px;
+    padding: 0 16px;
+  }
+  .logo {
+    font-size: 1.1rem;
+  }
+  .logo-aurora-pequena {
+    width: 42px;
+    height: 30px;
+  }
+  .header-actions .text-button,
+  .header-actions .icon-button:last-child {
+    display: none;
+  }
+  .primary.small {
+    padding: 9px 12px;
+    font-size: 0.8rem;
+  }
+  .main-content {
+    width: min(100% - 24px, 600px);
+    padding: 28px 0;
+  }
+  .site-footer {
+    padding: 22px 16px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .screen-picker {
+    right: 10px;
+    bottom: 10px;
+  }
+  .screen-picker > span {
+    display: none;
+  }
+  .home-hero {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    min-height: auto;
+  }
+  .home-hero h1 {
+    font-size: 3.2rem;
+  }
+  .hero-visual {
+    min-height: 360px;
+  }
+  .feature-row {
+    grid-template-columns: 1fr;
+  }
+  .auth-card,
+  .page-card {
+    padding: 25px 20px;
+    border-radius: 18px;
+  }
+  .page-heading h1 {
+    font-size: 1.4rem;
+  }
+  .device-layout,
+  .plans-grid,
+  .profile-grid,
+  .profile-bottom,
+  .circle-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .circle-member {
+    grid-template-columns: auto 1fr;
+  }
+
+  .location-button {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+  .circles,
+  .profile-bottom section + section {
+    padding: 25px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--color-border);
+  }
+  .profile-photo > span {
+    width: 90px;
+    height: 90px;
+  }
+  .history-row time {
+    max-width: 55px;
+    text-align: right;
+  }
+  .hero-actions {
+    flex-direction: column;
+  }
+  .hero-actions button {
+    width: 100%;
+  }
+}

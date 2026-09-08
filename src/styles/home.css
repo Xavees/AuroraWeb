@@ -1,0 +1,145 @@
+/* Página inicial: apresentação, ilustração e benefícios. */
+.home-page {
+  width: 100%;
+}
+.home-hero {
+  min-height: 510px;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 70px;
+}
+.eyebrow {
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+.home-hero h1 {
+  max-width: 650px;
+  margin: 18px 0 22px;
+  font-size: clamp(3rem, 6vw, 5.3rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+.home-hero p {
+  max-width: 570px;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 1.12rem;
+  line-height: 1.7;
+}
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+}
+.hero-visual {
+  min-height: 440px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(118, 46, 235, 0.14);
+  border-radius: 40px;
+  background: linear-gradient(
+    145deg,
+    var(--color-primary-soft),
+    rgba(93, 206, 255, 0.28) 58%,
+    rgba(138, 236, 127, 0.3)
+  );
+}
+.map-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(var(--color-surface) 2px, transparent 2px),
+    linear-gradient(90deg, var(--color-surface) 2px, transparent 2px);
+  background-size: 70px 70px;
+  transform: rotate(-12deg) scale(1.3);
+}
+.phone-mock {
+  width: 210px;
+  height: 340px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  border: 8px solid var(--color-text);
+  border-radius: 32px;
+  background: var(--color-surface);
+  box-shadow: 0 30px 60px var(--color-shadow);
+  transform: rotate(4deg);
+}
+.phone-map {
+  width: 100%;
+  height: 225px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+  border-radius: 17px;
+  color: var(--color-primary);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-soft),
+    rgba(93, 206, 255, 0.28),
+    rgba(138, 236, 127, 0.35)
+  );
+  font-size: 3.2rem;
+}
+.phone-mock small {
+  color: var(--color-muted);
+  margin-top: 4px;
+}
+.pulse {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(118, 46, 235, 0.16);
+  border: 2px solid rgba(118, 46, 235, 0.4);
+}
+.pulse-one {
+  left: 12%;
+  top: 20%;
+}
+.pulse-two {
+  right: 10%;
+  bottom: 18%;
+  background: rgba(241, 110, 228, 0.18);
+  border-color: rgba(241, 110, 228, 0.5);
+}
+.feature-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 30px;
+}
+.feature-row article {
+  padding: 26px;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: var(--color-surface);
+}
+.feature-row article > span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 1.3rem;
+}
+.feature-row h2 {
+  font-size: 1rem;
+  margin: 18px 0 7px;
+}
+.feature-row p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
