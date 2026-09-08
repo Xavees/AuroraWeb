@@ -1,0 +1,52 @@
+/* Planos de assinatura: comparação das opções disponíveis. */
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.plan {
+  position: relative;
+  padding: 26px;
+  border: 1px solid var(--color-border);
+  border-radius: 17px;
+}
+.plan.premium {
+  border-color: var(--color-primary);
+  background: linear-gradient(
+    160deg,
+    var(--color-surface),
+    var(--color-primary-soft)
+  );
+}
+.plan h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+.price {
+  display: block;
+  margin: 12px 0 20px;
+  color: var(--color-primary);
+  font-size: 1.45rem;
+}
+.plan ul {
+  min-height: 125px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+.plan li {
+  margin: 10px 0;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+}
+.plan-badge {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  padding: 5px 8px;
+  border-radius: 10px;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 0.65rem;
+  font-weight: 700;
+}

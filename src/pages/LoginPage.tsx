@@ -22,7 +22,7 @@ export function LoginPage({ navigate }: { navigate: Navigate }) {
             Esqueci a senha
           </button>
         </div>
-        {/* AQUI VOCÊ VAI DESENVOLVER: autenticação e validação do login. */}
+        {/* AQUI VOCÊ VAI DESENVOLVER COM API REST: autenticação e validação do login. */}
         <button className="primary wide">Entrar</button>
         <p className="form-note">
           Ainda não tem conta?{" "}

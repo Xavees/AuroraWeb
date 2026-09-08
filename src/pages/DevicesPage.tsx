@@ -35,7 +35,7 @@ export function DevicesPage() {
           <Toggle label="Trabalho" />
         </aside>
       </div>
-      {/* AQUI VOCÊ VAI DESENVOLVER: dispositivos, locais e círculos reais. */}
+      {/* AQUI VOCÊ VAI DESENVOLVER COM API REST: dispositivos, locais e círculos. */}
     </PageCard>
   );
 }

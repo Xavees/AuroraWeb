@@ -36,7 +36,7 @@ export function HistoryPage() {
           time="Ontem, 18:45"
         />
       </div>
-      {/* AQUI VOCÊ VAI DESENVOLVER: filtros, paginação e histórico real. */}
+      {/* AQUI VOCÊ VAI DESENVOLVER COM API REST: filtros, paginação e histórico. */}
     </PageCard>
   );
 }
