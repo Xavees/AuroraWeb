@@ -59,6 +59,29 @@
   align-items: center;
   gap: 10px;
 }
+
+/* Identificação exibida quando há uma sessão ativa. */
+.header-user {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 10px 6px 6px;
+  border-radius: 12px;
+  color: var(--color-text);
+  background: var(--color-primary-soft);
+  font-weight: 600;
+}
+
+.header-avatar {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  background: var(--color-primary);
+  font-size: 0.78rem;
+}
 button {
   border: 0;
 }

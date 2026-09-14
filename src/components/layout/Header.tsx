@@ -1,4 +1,5 @@
 import type { Navigate, Theme } from "../../types/app";
+import { useAutenticacao } from "../../hooks/useAutenticacao";
 import { LogoAurora } from "../ui/LogoAurora";
 
 type HeaderProps = {
@@ -9,6 +10,13 @@ type HeaderProps = {
 
 // Cabeçalho global com atalhos de autenticação, perfil e tema.
 export function Header({ navigate, theme, toggleTheme }: HeaderProps) {
+  const { usuario, estaLogado, sair } = useAutenticacao();
+
+  function encerrarSessao() {
+    sair();
+    navigate("home");
+  }
+
   return (
     <header className="site-header">
       <button className="logo" onClick={() => navigate("home")}>
@@ -17,19 +25,31 @@ export function Header({ navigate, theme, toggleTheme }: HeaderProps) {
       </button>
 
       <nav className="header-actions" aria-label="Navegação principal">
-        <button className="text-button" onClick={() => navigate("login")}>
-          Entrar
-        </button>
-        <button className="primary small" onClick={() => navigate("signup")}>
-          Criar conta
-        </button>
-        <button
-          className="icon-button"
-          onClick={() => navigate("profile")}
-          aria-label="Meu perfil"
-        >
-          ♙
-        </button>
+        {estaLogado && usuario ? (
+          <>
+            <button className="header-user" onClick={() => navigate("profile")}>
+              <span className="header-avatar">
+                {usuario.nome.charAt(0).toUpperCase()}
+              </span>
+              <span>{usuario.nome}</span>
+            </button>
+            <button className="text-button" onClick={encerrarSessao}>
+              Sair
+            </button>
+          </>
+        ) : (
+          <>
+            <button className="text-button" onClick={() => navigate("login")}>
+              Entrar
+            </button>
+            <button
+              className="primary small"
+              onClick={() => navigate("signup")}
+            >
+              Criar conta
+            </button>
+          </>
+        )}
         <button
           className="icon-button"
           onClick={toggleTheme}

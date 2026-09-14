@@ -1,5 +1,7 @@
+import { useState, type FormEvent } from "react";
 import { PageCard } from "../components/ui/Cards";
 import { Field, Toggle } from "../components/ui/FormControls";
+import { useAutenticacao } from "../hooks/useAutenticacao";
 import type { Navigate, Theme } from "../types/app";
 
 type ProfilePageProps = {
@@ -14,6 +16,37 @@ export function ProfilePage({
   theme,
   toggleTheme,
 }: ProfilePageProps) {
+  const { usuario, atualizar } = useAutenticacao();
+  const [nome, setNome] = useState(usuario?.nome ?? "");
+  const [email, setEmail] = useState(usuario?.email ?? "");
+  const [telefone, setTelefone] = useState(usuario?.telefone ?? "");
+  const [mensagem, setMensagem] = useState("");
+  const [tipoMensagem, setTipoMensagem] = useState<"sucesso" | "erro">(
+    "sucesso",
+  );
+  const [salvando, setSalvando] = useState(false);
+
+  async function salvarPerfil(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setSalvando(true);
+    setMensagem("");
+
+    try {
+      const resposta = await atualizar({ nome, email, telefone });
+      setTipoMensagem("sucesso");
+      setMensagem(resposta);
+    } catch (erro) {
+      setTipoMensagem("erro");
+      setMensagem(
+        erro instanceof Error
+          ? erro.message
+          : "Não foi possível atualizar o perfil.",
+      );
+    } finally {
+      setSalvando(false);
+    }
+  }
+
   return (
     <PageCard
       title="Meu perfil"
@@ -24,21 +57,36 @@ export function ProfilePage({
       <div className="profile-grid">
         {/* // foto temporaria, a logo nova ja foi escolhida ! */}
         <div className="profile-photo">
-          <span>XA</span>
+          <span>{usuario?.nome.charAt(0).toUpperCase() ?? "A"}</span>
           <button>Alterar foto</button>
         </div>
-        <form
-          className="form compact"
-          onSubmit={(event) => event.preventDefault()}
-        >
-          <Field label="Nome" defaultValue="Usuário Aurora" />
+        <form className="form compact" onSubmit={salvarPerfil}>
+          <Field
+            label="Nome"
+            value={nome}
+            onChange={(event) => setNome(event.target.value)}
+            required
+          />
           <Field
             label="E-mail"
             type="email"
-            defaultValue="usuario@aurora.com"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            required
           />
-          <Field label="Telefone" defaultValue="(00) 00000-0000" />
-          <button className="primary">Salvar alterações</button>
+          <Field
+            label="Telefone"
+            type="tel"
+            value={telefone}
+            onChange={(event) => setTelefone(event.target.value)}
+            required
+          />
+          {mensagem && (
+            <p className={`api-message ${tipoMensagem}`}>{mensagem}</p>
+          )}
+          <button className="primary" disabled={salvando}>
+            {salvando ? "Salvando..." : "Salvar alterações"}
+          </button>
         </form>
       </div>
       <div className="profile-bottom">

@@ -1,5 +1,6 @@
 // Endereço base definido no arquivo .env quando a API REST estiver disponível.
-const URL_BASE_API = import.meta.env.VITE_API_URL ?? "";
+// URL temporária da API Express. No NestJS, configure VITE_API_URL no arquivo .env.
+const URL_BASE_API = import.meta.env.VITE_API_URL ?? "http://localhost:3000";
 
 type OpcoesRequisicao = RequestInit & {
   token?: string;
@@ -21,7 +22,11 @@ export async function requisicaoApi<T>(
   });
 
   if (!resposta.ok) {
-    throw new Error(`Erro na API REST: ${resposta.status}`);
+    const corpoErro = (await resposta.json().catch(() => null)) as {
+      error?: string;
+    } | null;
+
+    throw new Error(corpoErro?.error ?? `Erro na API REST: ${resposta.status}`);
   }
 
   return resposta.json() as Promise<T>;

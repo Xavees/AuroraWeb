@@ -89,6 +89,31 @@
   color: var(--color-muted);
   font-size: 0.82rem;
 }
+
+/* Retorno visual temporário das chamadas à API REST. */
+.api-message {
+  margin: 0;
+  padding: 11px 13px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.api-message.sucesso {
+  color: #176c4e;
+  background: color-mix(in srgb, var(--color-accent) 22%, var(--color-surface));
+}
+
+.api-message.erro {
+  color: var(--color-danger);
+  background: color-mix(in srgb, var(--color-danger) 12%, var(--color-surface));
+}
+
+.primary:disabled {
+  cursor: wait;
+  opacity: 0.65;
+  transform: none;
+}
 .otp-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

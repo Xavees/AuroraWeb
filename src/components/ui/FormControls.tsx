@@ -1,8 +1,13 @@
+import type { ChangeEventHandler } from "react";
+
 type FieldProps = {
   label: string;
   type?: string;
   placeholder?: string;
   defaultValue?: string;
+  value?: string;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  required?: boolean;
 };
 
 // Campo de formulário reutilizável.
@@ -11,6 +16,9 @@ export function Field({
   type = "text",
   placeholder,
   defaultValue,
+  value,
+  onChange,
+  required,
 }: FieldProps) {
   return (
     <label className="field">
@@ -19,16 +27,25 @@ export function Field({
         type={type}
         placeholder={placeholder}
         defaultValue={defaultValue}
+        value={value}
+        onChange={onChange}
+        required={required}
       />
     </label>
   );
 }
 
-// Caixa de seleção textual.
-export function Check({ label }: { label: string }) {
+type CheckProps = {
+  label: string;
+  checked?: boolean;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+};
+
+// Caixa de seleção textual, controlada quando recebe estado e evento.
+export function Check({ label, checked, onChange }: CheckProps) {
   return (
     <label className="check">
-      <input type="checkbox" />
+      <input type="checkbox" checked={checked} onChange={onChange} />
       <span>{label}</span>
     </label>
   );
