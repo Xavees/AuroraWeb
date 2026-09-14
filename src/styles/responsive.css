@@ -15,6 +15,9 @@
   .header-actions .icon-button:last-child {
     display: none;
   }
+  .header-user > span:last-child {
+    display: none;
+  }
   .primary.small {
     padding: 9px 12px;
     font-size: 0.8rem;
