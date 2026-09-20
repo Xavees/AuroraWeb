@@ -1,0 +1,111 @@
+.home-faq {
+  max-width: 900px;
+  margin: clamp(72px, 9vw, 128px) auto 0;
+}
+.home-faq-heading {
+  margin-bottom: 40px;
+  text-align: center;
+}
+.home-faq-heading h2 {
+  margin: 18px 0 22px;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+.home-faq-heading p,
+.home-signup p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 1.12rem;
+  line-height: 1.7;
+}
+.home-faq-list {
+  border-top: 1px solid var(--color-border);
+}
+.home-faq-item {
+  border-bottom: 1px solid var(--color-border);
+}
+.home-faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 26px 4px;
+  list-style: none;
+  cursor: pointer;
+  font-size: 1.12rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.home-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.home-faq-item summary:hover,
+.home-faq-item[open] summary {
+  color: var(--color-primary);
+}
+.home-faq-item summary:focus-visible,
+.home-signup button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: 11px;
+}
+.home-faq-icon {
+  position: relative;
+  flex: 0 0 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+}
+.home-faq-icon::before,
+.home-faq-icon::after {
+  content: "";
+  position: absolute;
+  inset: 15px 10px;
+  background: currentColor;
+}
+.home-faq-icon::after {
+  transform: rotate(90deg);
+}
+.home-faq-item[open] .home-faq-icon::after {
+  display: none;
+}
+.home-faq-item > p {
+  max-width: 760px;
+  margin: 0;
+  padding: 0 4px 26px;
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.home-signup {
+  margin-top: clamp(64px, 8vw, 104px);
+  padding: clamp(32px, 5vw, 64px) 24px;
+  border-radius: 40px;
+  background: var(--color-primary-soft);
+  text-align: center;
+}
+.home-signup h2 {
+  max-width: 720px;
+  margin: 18px auto 22px;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+.home-signup p {
+  max-width: 620px;
+  margin-inline: auto;
+}
+.home-signup button {
+  margin-top: 28px;
+}
+@media (max-width: 760px) {
+  .home-faq-item summary {
+    gap: 16px;
+    padding-block: 22px;
+  }
+  .home-signup {
+    border-radius: 24px;
+  }
+}

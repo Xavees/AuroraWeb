@@ -1,6 +1,9 @@
 /* Índice central dos estilos. Cada responsabilidade fica em seu próprio arquivo. */
 @import "./styles/layout.css";
 @import "./styles/home.css";
+@import "./styles/ecosystem.css";
+@import "./styles/reviews.css";
+@import "./styles/faq.css";
 @import "./styles/components.css";
 @import "./styles/history.css";
 @import "./styles/plans.css";

@@ -1,4 +1,8 @@
 import type { Navigate } from "../types/app";
+import { GettingStarted } from "../components/home/GettingStarted";
+import { Ecosystem } from "../components/home/Ecosystem";
+import { Reviews } from "../components/home/Reviews";
+import { HomeFaq } from "../components/home/HomeFaq";
 
 // Landing page com proposta de valor e benefícios do Aurora.
 export function HomePage({ navigate }: { navigate: Navigate }) {
@@ -48,6 +52,25 @@ export function HomePage({ navigate }: { navigate: Navigate }) {
           <h2>Círculos de confiança</h2>
           <p>Organize família e amigos em grupos privados e seguros.</p>
         </article>
+      </section>
+      <Ecosystem />
+      <GettingStarted />
+      <Reviews />
+      <HomeFaq />
+      <section className="home-signup" aria-labelledby="home-signup-title">
+        <span className="eyebrow">FAÇA PARTE DO AURORA</span>
+        <h2 id="home-signup-title">Sua rede de confiança começa com você.</h2>
+        <p>
+          Crie sua conta e dê o primeiro passo para fazer parte do ecossistema
+          Aurora.
+        </p>
+        <button
+          className="primary"
+          type="button"
+          onClick={() => navigate("signup")}
+        >
+          Começar agora
+        </button>
       </section>
     </div>
   );
