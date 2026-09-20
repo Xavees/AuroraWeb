@@ -1,5 +1,6 @@
 /* Estrutura geral: página, cabeçalho, conteúdo e rodapé. */
 .app {
+  container-type: inline-size;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type { CredenciaisLogin, DadosPerfil } from "../services/api/authApi";
+import type { CredenciaisLogin, DadosPerfil } from "../types/autenticacao";
 
 export type UsuarioSessao = {
   id: number;

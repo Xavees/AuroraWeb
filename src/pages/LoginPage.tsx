@@ -13,7 +13,7 @@ export function LoginPage({ navigate }: { navigate: Navigate }) {
   const [carregando, setCarregando] = useState(false);
   const { entrar } = useAutenticacao();
 
-  // Envia as credenciais para a API Express e exibe o resultado na própria tela.
+  // Exibe o resultado da autenticação na própria tela.
   async function enviarLogin(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setCarregando(true);
@@ -69,7 +69,6 @@ export function LoginPage({ navigate }: { navigate: Navigate }) {
             Esqueci a senha
           </button>
         </div>
-        {/* INTEGRAÇÃO TEMPORÁRIA: login conectado à API Express para teste visual. */}
         {mensagem && <p className="api-message erro">{mensagem}</p>}
         <button className="primary wide" disabled={carregando}>
           {carregando ? "Entrando..." : "Entrar"}

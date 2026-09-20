@@ -1,6 +1,5 @@
 // Endereço base definido no arquivo .env quando a API REST estiver disponível.
-// URL temporária da API Express. No NestJS, configure VITE_API_URL no arquivo .env.
-const URL_BASE_API = import.meta.env.VITE_API_URL ?? "http://localhost:3000";
+const URL_BASE_API = import.meta.env.VITE_API_URL;
 
 type OpcoesRequisicao = RequestInit & {
   token?: string;
@@ -12,6 +11,10 @@ export async function requisicaoApi<T>(
   rota: string,
   { token, headers, ...opcoes }: OpcoesRequisicao = {},
 ): Promise<T> {
+  if (!URL_BASE_API) {
+    throw new Error("A API ainda não foi configurada.");
+  }
+
   const resposta = await fetch(`${URL_BASE_API}${rota}`, {
     ...opcoes,
     headers: {

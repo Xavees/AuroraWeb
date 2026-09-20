@@ -1,0 +1,126 @@
+/* Apresentação do dispositivo, aplicativo e plataforma web. */
+.ecosystem {
+  margin-top: clamp(72px, 9vw, 128px);
+}
+.ecosystem-heading {
+  max-width: 820px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+.ecosystem-heading h2 {
+  margin: 18px 0 22px;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+.ecosystem-heading p,
+.ecosystem-copy p,
+.ecosystem-accessibility p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 1.12rem;
+  line-height: 1.7;
+}
+.ecosystem-device {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 64px);
+  padding: clamp(24px, 4vw, 48px);
+  border: 1px solid var(--color-border);
+  border-radius: 40px;
+  background: var(--color-surface);
+}
+.ecosystem-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  aspect-ratio: 4 / 3;
+  border-radius: 24px;
+  color: var(--color-muted);
+  background: var(--color-primary-soft);
+}
+.ecosystem-image svg {
+  color: var(--color-primary);
+}
+.ecosystem-image span {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.ecosystem-image small {
+  font-size: 0.78rem;
+}
+.ecosystem-copy h3 {
+  margin: 16px 0 20px;
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+.ecosystem-copy p + p {
+  margin-top: 16px;
+}
+.ecosystem-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  padding-left: 18px;
+  margin: 24px 0 0;
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.ecosystem-features li::marker {
+  color: var(--color-primary);
+}
+.ecosystem-platforms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 4vw, 48px);
+  margin-top: 48px;
+}
+.ecosystem-platform .ecosystem-copy {
+  padding: 28px 8px 0;
+}
+.ecosystem-platform:first-child .ecosystem-image {
+  background: color-mix(
+    in srgb,
+    var(--color-accent-blue) 14%,
+    var(--color-surface)
+  );
+}
+.ecosystem-platform:last-child .ecosystem-image {
+  background: var(--color-beige);
+}
+.ecosystem-accessibility {
+  max-width: 820px;
+  margin: 64px auto 0;
+  text-align: center;
+}
+.ecosystem-accessibility h3 {
+  margin: 16px 0 20px;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+@media (max-width: 760px) {
+  .ecosystem-heading {
+    margin-bottom: 40px;
+  }
+  .ecosystem-device,
+  .ecosystem-platforms {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ecosystem-device {
+    padding: 20px;
+    border-radius: 24px;
+  }
+  .ecosystem-platforms {
+    gap: 40px;
+    margin-top: 32px;
+  }
+  .ecosystem-accessibility {
+    margin-top: 48px;
+  }
+}

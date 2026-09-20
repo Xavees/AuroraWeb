@@ -1,0 +1,111 @@
+.home-reviews {
+  min-width: 0;
+  margin-top: clamp(72px, 9vw, 128px);
+}
+.home-reviews-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.home-reviews-heading h2 {
+  margin: 18px 0 0;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+.home-reviews-track {
+  /* Sai do limite de 1180px da home e alcança as bordas úteis da tela. */
+  width: 100cqw;
+  margin-inline: calc(50% - 50cqw);
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: clamp(280px, 28cqw, 560px);
+  gap: 24px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  margin-block: 0;
+  padding: 0 20px;
+  list-style: none;
+  scrollbar-width: none;
+}
+.home-reviews-track::-webkit-scrollbar {
+  display: none;
+}
+.home-review-card {
+  min-width: 0;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 28px;
+  background: color-mix(
+    in srgb,
+    var(--color-accent-blue) 24%,
+    var(--color-surface)
+  );
+}
+.home-review-card:nth-child(4n + 2) {
+  background: color-mix(in srgb, var(--color-accent) 24%, var(--color-surface));
+}
+.home-review-card:nth-child(4n + 3) {
+  background: var(--color-primary-soft);
+}
+.home-review-card:nth-child(4n) {
+  background: color-mix(
+    in srgb,
+    var(--color-accent-pink) 24%,
+    var(--color-surface)
+  );
+}
+.home-review-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.home-review-placeholder {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--color-muted);
+}
+.home-review-placeholder svg {
+  color: var(--color-primary);
+}
+.home-review-placeholder span {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.home-review-placeholder small {
+  font-size: 0.78rem;
+}
+.home-reviews-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+.home-reviews-controls .icon-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 1.6rem;
+}
+.home-reviews-controls .icon-button:hover {
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+}
+.home-reviews-track:focus-visible,
+.home-reviews-controls button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .home-reviews-track {
+    grid-auto-columns: 78cqw;
+    gap: 16px;
+  }
+  .home-review-card {
+    border-radius: 24px;
+  }
+}

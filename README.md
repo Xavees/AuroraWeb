@@ -25,7 +25,7 @@ Atualmente, o projeto utiliza:
 * **Vite**
 * **CSS**
 * **ESLint**
-* **Nest.js**
+* **Nest.js** (planejado para o backend separado)
 
 Novas tecnologias poderão ser adicionadas conforme o desenvolvimento avançar.
 
@@ -79,6 +79,8 @@ npm run dev
 
 O Vite exibirá no terminal o endereço local para acessar a aplicação.
 
+O frontend está sem integração de autenticação e perfil com o backend. As telas permanecem disponíveis, mas entrar e salvar o perfil exibem uma mensagem de indisponibilidade, sem enviar requisições ou restaurar sessões antigas. A integração será implementada com o backend Nest.js. O cliente HTTP genérico em `src/services/api/clienteApi.ts` está reservado para essa etapa e exige `VITE_API_URL`, sem endereço padrão; configurar essa variável por si só não ativa login ou perfil.
+
 ---
 
 ## 🎯 Objetivos da versão Web
@@ -109,3 +111,4 @@ Esta implementação está sendo desenvolvida separadamente com foco específico
 Desenvolvido por **Equipe 01**.
 
 Projeto acadêmico e de estudos voltado à aplicação prática de conceitos de **Engenharia de Software, desenvolvimento Web e TypeScript**.
+
