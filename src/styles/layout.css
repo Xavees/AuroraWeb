@@ -47,13 +47,23 @@
   object-fit: contain;
 }
 .logo-aurora-pequena {
-  width: 48px;
-  height: 34px;
+  width: 56px;
+  height: 56px;
 }
 .logo-aurora-grande {
-  width: 92px;
-  height: 64px;
-  margin: 0 auto 16px;
+  width: 180px;
+  height: 180px;
+  max-width: 100%;
+  margin: 0 auto 8px;
+}
+.logo-aurora-escura {
+  display: none;
+}
+[data-theme="dark"] .logo-aurora-clara {
+  display: none;
+}
+[data-theme="dark"] .logo-aurora-escura {
+  display: block;
 }
 .header-actions {
   display: flex;
@@ -159,8 +169,8 @@ button {
   font-size: 1rem;
 }
 .footer-logo .logo-aurora {
-  width: 42px;
-  height: 30px;
+  width: 48px;
+  height: 48px;
 }
 .screen-picker {
   position: fixed;

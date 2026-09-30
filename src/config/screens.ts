@@ -3,6 +3,7 @@ import type { Screen } from "../types/app";
 // Rótulos exibidos no seletor temporário de telas.
 export const nomesTelas: Record<Screen, string> = {
   home: "Início",
+  "risk-map": "Mapa de risco",
   login: "Login",
   signup: "Criar conta",
   forgot: "Esqueci a senha",

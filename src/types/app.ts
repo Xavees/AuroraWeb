@@ -1,6 +1,7 @@
 // Telas disponíveis no protótipo.
 export type Screen =
   | "home"
+  | "risk-map"
   | "login"
   | "signup"
   | "forgot"

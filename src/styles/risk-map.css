@@ -1,0 +1,59 @@
+.risk-page {
+  width: 100%;
+  min-width: 0;
+}
+.risk-heading {
+  margin: 24px 0;
+}
+.risk-heading h1 {
+  margin: 12px 0;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+.risk-heading p,
+.risk-status p,
+.risk-help {
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+.risk-status {
+  padding: 20px 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: var(--color-surface);
+}
+.risk-status strong {
+  color: var(--color-primary);
+}
+.risk-status p {
+  margin: 8px 0 0;
+}
+.risk-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 24px 0 16px;
+  flex-wrap: wrap;
+  color: var(--color-muted);
+}
+.risk-map {
+  height: clamp(360px, 60vh, 640px);
+  width: 100%;
+  border-radius: 24px;
+  border: 1px solid var(--color-border);
+  z-index: 0;
+}
+.risk-help {
+  font-size: 0.88rem;
+}
+.risk-map-error {
+  margin-bottom: 16px;
+  color: var(--color-danger);
+}
+.risk-page button:focus-visible,
+.risk-map:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
