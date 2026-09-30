@@ -10,6 +10,7 @@ import { ForgotPasswordPage } from "./pages/ForgotPasswordPage";
 import { FriendRequestPage } from "./pages/FriendRequestPage";
 import { HistoryPage } from "./pages/HistoryPage";
 import { HomePage } from "./pages/HomePage";
+import { RiskMapPage } from "./pages/RiskMapPage";
 import { LoginPage } from "./pages/LoginPage";
 import { OtpPage } from "./pages/OtpPage";
 import { PlansPage } from "./pages/PlansPage";
@@ -88,6 +89,8 @@ function PaginaAtual({
   toggleTheme,
 }: PropriedadesPaginaAtual) {
   switch (screen) {
+    case "risk-map":
+      return <RiskMapPage navigate={navigate} />;
     case "login":
       return <LoginPage navigate={navigate} />;
     case "signup":

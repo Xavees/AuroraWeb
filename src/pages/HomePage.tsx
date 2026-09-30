@@ -10,18 +10,19 @@ export function HomePage({ navigate }: { navigate: Navigate }) {
     <div className="home-page">
       <section className="home-hero">
         <div>
-          <span className="eyebrow">SEGURANÇA QUE APROXIMA</span>
-          <h1>Cuide de quem importa, onde estiver.</h1>
+          <span className="eyebrow">SEGURANÇA CONSTRUÍDA EM COMUNIDADE</span>
+          <h1>Juntos, por caminhos mais seguros.</h1>
           <p>
-            Monitore dispositivos, compartilhe rotas e mantenha sua rede de
-            confiança sempre por perto.
+            O Aurora conecta pessoas para compartilhar informações sobre zonas
+            de risco, segurança e iluminação dos locais. Contribua com a
+            comunidade e conheça melhor os lugares por onde você passa.
           </p>
           <div className="hero-actions">
             <button className="primary" onClick={() => navigate("signup")}>
               Começar agora
             </button>
-            <button className="secondary" onClick={() => navigate("devices")}>
-              Ver dispositivos
+            <button className="secondary" onClick={() => navigate("risk-map")}>
+              Ver mapa demarcado por risco
             </button>
           </div>
         </div>
@@ -31,8 +32,8 @@ export function HomePage({ navigate }: { navigate: Navigate }) {
           <div className="pulse pulse-two" />
           <div className="phone-mock">
             <div className="phone-map">⌖</div>
-            <strong>Você está seguro</strong>
-            <small>Localização compartilhada</small>
+            <strong>Mapa comunitário</strong>
+            <small>Informação que aproxima</small>
           </div>
         </div>
       </section>
