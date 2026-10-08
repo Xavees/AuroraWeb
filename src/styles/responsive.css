@@ -46,8 +46,8 @@
   .home-hero h1 {
     font-size: 3.2rem;
   }
-  .hero-visual {
-    min-height: 360px;
+  .hero-image {
+    border-radius: 24px;
   }
   .feature-row {
     grid-template-columns: 1fr;

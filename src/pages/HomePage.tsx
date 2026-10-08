@@ -1,11 +1,19 @@
-import type { Navigate } from "../types/app";
+import type { Navigate, Theme } from "../types/app";
 import { GettingStarted } from "../components/home/GettingStarted";
 import { Ecosystem } from "../components/home/Ecosystem";
 import { Reviews } from "../components/home/Reviews";
 import { HomeFaq } from "../components/home/HomeFaq";
+import imagemApresentacao from "../assets/Home/imgApresentacao.png";
+import imagemApresentacaoClara from "../assets/Home/imgApresentacaoClaro.png";
 
 // Landing page com proposta de valor e benefícios do Aurora.
-export function HomePage({ navigate }: { navigate: Navigate }) {
+export function HomePage({
+  navigate,
+  theme,
+}: {
+  navigate: Navigate;
+  theme: Theme;
+}) {
   return (
     <div className="home-page">
       <section className="home-hero">
@@ -26,16 +34,14 @@ export function HomePage({ navigate }: { navigate: Navigate }) {
             </button>
           </div>
         </div>
-        <div className="hero-visual">
-          <div className="map-grid" />
-          <div className="pulse pulse-one" />
-          <div className="pulse pulse-two" />
-          <div className="phone-mock">
-            <div className="phone-map">⌖</div>
-            <strong>Mapa comunitário</strong>
-            <small>Informação que aproxima</small>
-          </div>
-        </div>
+        <img
+          className="hero-image"
+          src={theme === "dark" ? imagemApresentacao : imagemApresentacaoClara}
+          alt="Ilustração do Aurora com mapa comunitário, marcações de zonas de risco e aplicativo no celular."
+          width="1536"
+          height="1024"
+          fetchPriority="high"
+        />
       </section>
       <section className="feature-row">
         <article>

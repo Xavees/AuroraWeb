@@ -1,6 +1,6 @@
-import iconeAurora from "../../assets/v3 - Atual/separado/LogoTipoAurora.png";
-import logoClara from "../../assets/v3 - Atual/vertical/AuroraPreto.png";
-import logoEscura from "../../assets/v3 - Atual/vertical/AuroraBranco.png";
+import iconeAurora from "../../assets/LogosdoAPP/separado/LogoTipoAurora.png";
+import logoClara from "../../assets/LogosdoAPP/vertical/AuroraPreto.png";
+import logoEscura from "../../assets/LogosdoAPP/vertical/AuroraBranco.png";
 
 type PropriedadesLogoAurora = {
   tamanho?: "pequena" | "grande";
