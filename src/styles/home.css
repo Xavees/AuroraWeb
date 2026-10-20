@@ -126,12 +126,12 @@
 .home-step:nth-child(3n + 2) .home-step-visual {
   background: color-mix(
     in srgb,
-    var(--color-accent-blue) 14%,
+    var(--color-primary) 14%,
     var(--color-surface)
   );
 }
 .home-step:nth-child(3n) .home-step-visual {
-  background: var(--color-beige);
+  background: var(--color-neutral-soft);
 }
 .home-step-visual img {
   display: block;
@@ -188,4 +188,11 @@
   .home-step-copy h3 {
     margin: 12px 0;
   }
+}
+
+.feature-row article > span img {
+  display: block;
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
 }

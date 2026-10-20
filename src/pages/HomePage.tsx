@@ -1,3 +1,6 @@
+import iconeLocalizacao from "../assets/Home/svg/svgLocalizacao.png";
+import iconeAlerta from "../assets/Home/svg/svgAlerta.png";
+import iconeUsuario from "../assets/Home/svg/svgUsuario.png";
 import type { Navigate, Theme } from "../types/app";
 import { GettingStarted } from "../components/home/GettingStarted";
 import { Ecosystem } from "../components/home/Ecosystem";
@@ -45,17 +48,23 @@ export function HomePage({
       </section>
       <section className="feature-row">
         <article>
-          <span>⌖</span>
+          <span aria-hidden="true">
+            <img src={iconeLocalizacao} alt="" width="26" height="26" />
+          </span>
           <h2>Localização em tempo real</h2>
           <p>Acompanhe as pessoas da sua rede quando elas precisarem.</p>
         </article>
         <article>
-          <span>♢</span>
+          <span aria-hidden="true">
+            <img src={iconeAlerta} alt="" width="26" height="26" />
+          </span>
           <h2>Alertas rápidos</h2>
           <p>Receba notificações e sinais de emergência imediatamente.</p>
         </article>
         <article>
-          <span>◎</span>
+          <span aria-hidden="true">
+            <img src={iconeUsuario} alt="" width="26" height="26" />
+          </span>
           <h2>Círculos de confiança</h2>
           <p>Organize família e amigos em grupos privados e seguros.</p>
         </article>

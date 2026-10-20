@@ -18,7 +18,11 @@
   display: grid;
   place-items: center;
   border-radius: 28px;
-  background: linear-gradient(145deg, var(--color-primary-soft), #dff9f1);
+  background: linear-gradient(
+    145deg,
+    var(--color-primary-soft),
+    color-mix(in srgb, var(--color-accent) 12%, var(--color-surface))
+  );
   color: var(--color-primary);
   font-size: 2rem;
   font-weight: 700;

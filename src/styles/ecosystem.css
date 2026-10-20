@@ -86,12 +86,12 @@
 .ecosystem-platform:first-child .ecosystem-image {
   background: color-mix(
     in srgb,
-    var(--color-accent-blue) 14%,
+    var(--color-primary) 14%,
     var(--color-surface)
   );
 }
 .ecosystem-platform:last-child .ecosystem-image {
-  background: var(--color-beige);
+  background: var(--color-neutral-soft);
 }
 .ecosystem-accessibility {
   max-width: 820px;

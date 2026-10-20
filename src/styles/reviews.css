@@ -37,7 +37,7 @@
   border-radius: 28px;
   background: color-mix(
     in srgb,
-    var(--color-accent-blue) 24%,
+    var(--color-primary) 24%,
     var(--color-surface)
   );
 }
@@ -50,7 +50,7 @@
 .home-review-card:nth-child(4n) {
   background: color-mix(
     in srgb,
-    var(--color-accent-pink) 24%,
+    var(--color-tertiary) 24%,
     var(--color-surface)
   );
 }
