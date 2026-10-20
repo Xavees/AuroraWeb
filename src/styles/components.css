@@ -100,7 +100,7 @@
 }
 
 .api-message.sucesso {
-  color: #176c4e;
+  color: var(--color-accent);
   background: color-mix(in srgb, var(--color-accent) 22%, var(--color-surface));
 }
 
@@ -213,7 +213,7 @@
   background: var(--color-accent);
 }
 .presence.offline {
-  background: #aeb4c0;
+  background: var(--color-muted);
 }
 .back {
   margin: -8px 0 22px;

@@ -4,18 +4,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background:
-    radial-gradient(
-      circle at 85% 15%,
-      rgba(93, 206, 255, 0.24),
-      transparent 26%
-    ),
-    radial-gradient(
-      circle at 8% 48%,
-      rgba(241, 110, 228, 0.09),
-      transparent 22%
-    ),
-    var(--color-background);
+  background: var(--color-background);
 }
 .site-header {
   height: 76px;
@@ -89,7 +78,7 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  color: white;
+  color: var(--color-on-primary);
   background: var(--color-primary);
   font-size: 0.78rem;
 }
@@ -107,9 +96,10 @@ button {
   transition: 0.2s ease;
 }
 .primary {
-  color: white;
+  color: var(--color-on-primary);
   background: var(--color-primary);
-  box-shadow: 0 8px 22px rgba(108, 92, 231, 0.22);
+  box-shadow: 0 8px 22px
+    color-mix(in srgb, var(--color-primary) 22%, transparent);
 }
 .primary:hover {
   background: var(--color-primary-dark);

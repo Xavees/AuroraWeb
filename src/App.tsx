@@ -120,7 +120,7 @@ function PaginaAtual({
         />
       );
     default:
-      return <HomePage navigate={navigate} />;
+      return <HomePage navigate={navigate} theme={theme} />;
   }
 }
 
