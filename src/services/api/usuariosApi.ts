@@ -73,3 +73,41 @@ export async function atualizarUsuario(
     fotoUrl: usuario.fotoUrl ?? null,
   };
 }
+
+export function enderecoFoto(foto: string | null): string | null {
+  if (!foto) return null;
+  if (foto.startsWith("/uploads/perfis/")) {
+    const base = import.meta.env.VITE_API_URL?.trim();
+    return base ? new URL(foto, base).href : null;
+  }
+  try {
+    const url = new URL(foto);
+    return url.protocol === "https:" ? url.href : null;
+  } catch {
+    return null;
+  }
+}
+
+export async function enviarFotoPerfil(
+  arquivo: File,
+  token: string,
+): Promise<UsuarioSessao> {
+  if (arquivo.size > 5 * 1024 * 1024)
+    throw new Error("A foto deve ter até 5 MB.");
+  if (!["image/jpeg", "image/png", "image/webp"].includes(arquivo.type))
+    throw new Error("Escolha uma foto JPG, PNG ou WebP.");
+  const formulario = new FormData();
+  formulario.append("foto", arquivo);
+  const usuario = await requisicaoApi<RespostaUsuario>("/usuarios/eu/foto", {
+    method: "POST",
+    token,
+    body: formulario,
+  });
+  return {
+    id: usuario.id,
+    nome: usuario.nome,
+    email: usuario.email,
+    telefone: usuario.telefone ?? "",
+    fotoUrl: usuario.fotoUrl ?? null,
+  };
+}

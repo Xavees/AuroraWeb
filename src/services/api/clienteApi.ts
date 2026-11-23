@@ -20,7 +20,11 @@ export async function requisicaoApi<T>(
 ): Promise<T> {
   if (!URL_BASE_API) throw new Error("A API ainda não foi configurada.");
   const cabecalhos = new Headers(headers);
-  if (opcoes.body && !cabecalhos.has("Content-Type")) {
+  if (
+    opcoes.body &&
+    !(opcoes.body instanceof FormData) &&
+    !cabecalhos.has("Content-Type")
+  ) {
     cabecalhos.set("Content-Type", "application/json");
   }
   if (token) cabecalhos.set("Authorization", `Bearer ${token}`);

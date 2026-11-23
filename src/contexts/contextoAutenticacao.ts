@@ -17,6 +17,7 @@ type AutenticacaoContextValue = {
     manterConectado: boolean,
   ) => Promise<void>;
   atualizar: (dados: DadosPerfil) => Promise<string>;
+  enviarFoto: (arquivo: File) => Promise<void>;
   sair: () => void;
 };
 

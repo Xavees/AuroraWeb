@@ -112,3 +112,11 @@ Os arquivos aurora-web-cadastro.patch e aurora-api-cors.patch foram conferidos e
 A tela de perfil agora envia PATCH /usuarios/:id autenticado. Nome: 2–100 caracteres; telefone, quando alterado: 10–15 dígitos com + opcional. Foto: link HTTPS de até 255 caracteres. E-mail é somente leitura porque não integra AtualizarUsuarioDto. Campos opcionais inalterados são omitidos; remover telefone/foto não foi habilitado.
 
 O perfil e a foto são atualizados com a resposta real da API. Imagens inacessíveis exibem a inicial do usuário. Ainda não existe upload de arquivo no backend consultado: selecionar uma foto do computador exige implementar armazenamento e endpoint próprios. Não usamos base64 ou armazenamento local para simular persistência da foto.
+
+## Upload implementado na branch codex/upload-foto-perfil
+
+Meu perfil agora permite selecionar JPG, PNG ou WebP de até 5 MB, visualizar uma prévia, cancelar e salvar a foto. O envio é autenticado por POST /usuarios/eu/foto com multipart/form-data. O navegador define o boundary; o cliente não força JSON para FormData.
+
+O backend valida e converte a imagem com Sharp para WebP de até 512x512 e 25 megapixels de entrada. Os arquivos ficam em uploads/perfis, persistente através da pasta compartilhada do Dev Container. O banco guarda o caminho relativo; o Web o resolve contra VITE_API_URL. Não há migração de banco. Instale as dependências e reinicie o Nest após atualizar o código.
+
+As fotos são públicas por URL aleatória. Fotos antigas são preservadas nesta versão; programe limpeza e backup da pasta junto com o banco. A pasta uploads não deve entrar no Git. Veja o README do backend para configuração de UPLOAD_DIR.

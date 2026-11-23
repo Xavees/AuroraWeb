@@ -4,7 +4,11 @@ import {
   type UsuarioSessao,
 } from "./contextoAutenticacao";
 import { realizarLogin } from "../services/api/autenticacaoApi";
-import { buscarUsuario, atualizarUsuario } from "../services/api/usuariosApi";
+import {
+  buscarUsuario,
+  atualizarUsuario,
+  enviarFotoPerfil,
+} from "../services/api/usuariosApi";
 import {
   CHAVE_SESSAO,
   interpretarSessao,
@@ -127,6 +131,28 @@ export function ProvedorAutenticacao({ children }: { children: ReactNode }) {
     }
   }
 
+  async function enviarFoto(arquivo: File) {
+    if (!sessao || sessao.expiraEm <= Date.now()) {
+      sair();
+      throw new Error("Entre novamente para alterar sua foto.");
+    }
+    const versao = tentativa.current;
+    try {
+      const perfil = await enviarFotoPerfil(arquivo, sessao.token);
+      if (versao !== tentativa.current || sessao.expiraEm <= Date.now())
+        throw new Error("Sua sessão expirou. Entre novamente.");
+      setUsuario(perfil);
+    } catch (erro) {
+      if (
+        erro instanceof ErroApi &&
+        erro.status === 401 &&
+        versao === tentativa.current
+      )
+        sair();
+      throw erro;
+    }
+  }
+
   if (restaurando) return <p role="status">Carregando sua sessão…</p>;
 
   return (
@@ -137,6 +163,7 @@ export function ProvedorAutenticacao({ children }: { children: ReactNode }) {
         entrar,
         atualizar,
         sair,
+        enviarFoto,
       }}
     >
       {children}

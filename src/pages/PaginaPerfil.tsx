@@ -1,3 +1,4 @@
+import { FotoPerfil } from "../components/ui/FotoPerfil";
 import pageIcon from "../assets/Home/svg/meu-perfil.png";
 import { useState, type FormEvent } from "react";
 import { PageCard } from "../components/ui/Cartoes";
@@ -19,8 +20,6 @@ export function PaginaPerfil({
 }: ProfilePageProps) {
   const { usuario, atualizar } = useAutenticacao();
   const [nome, setNome] = useState(usuario?.nome ?? "");
-  const [fotoUrl, setFotoUrl] = useState(usuario?.fotoUrl ?? "");
-  const [fotoComErro, setFotoComErro] = useState(false);
   const [telefone, setTelefone] = useState(usuario?.telefone ?? "");
   const [mensagem, setMensagem] = useState("");
   const [tipoMensagem, setTipoMensagem] = useState<"sucesso" | "erro">(
@@ -39,9 +38,6 @@ export function PaginaPerfil({
         nome,
         ...(telefone !== (usuario?.telefone ?? "")
           ? { telefone: telefone.replace(/[\s().-]/g, "") }
-          : {}),
-        ...(fotoUrl !== (usuario?.fotoUrl ?? "")
-          ? { fotoUrl: fotoUrl.trim() }
           : {}),
       });
       setTipoMensagem("sucesso");
@@ -79,26 +75,7 @@ export function PaginaPerfil({
       wide
     >
       <div className="profile-grid">
-        <div className="profile-photo">
-          <span>
-            {usuario.fotoUrl && !fotoComErro ? (
-              <img
-                src={usuario.fotoUrl}
-                alt="Sua foto de perfil"
-                referrerPolicy="no-referrer"
-                onError={() => setFotoComErro(true)}
-              />
-            ) : (
-              usuario.nome.charAt(0).toUpperCase()
-            )}
-          </span>
-          <button
-            type="button"
-            onClick={() => document.getElementById("foto-perfil")?.focus()}
-          >
-            Alterar foto
-          </button>
-        </div>
+        <FotoPerfil />
         <form className="form compact" onSubmit={salvarPerfil}>
           <Field
             label="Nome"
@@ -117,25 +94,7 @@ export function PaginaPerfil({
             value={telefone}
             onChange={(event) => setTelefone(event.target.value)}
           />
-          <label className="field">
-            <span>Link da foto</span>
-            <input
-              id="foto-perfil"
-              type="url"
-              value={fotoUrl}
-              maxLength={255}
-              placeholder="https://exemplo.com/minha-foto.jpg"
-              onChange={(event) => {
-                setFotoUrl(event.target.value);
-                setFotoComErro(false);
-              }}
-              aria-describedby="foto-ajuda"
-            />
-            <small id="foto-ajuda">
-              Cole o link HTTPS de uma imagem. O envio de arquivos ainda não
-              está disponível.
-            </small>
-          </label>
+
           {mensagem && (
             <p role="status" className={`api-message ${tipoMensagem}`}>
               {mensagem}
