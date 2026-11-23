@@ -1,0 +1,13 @@
+/* Índice central dos estilos. Cada responsabilidade fica em seu próprio arquivo. */
+@import "./styles/estrutura.css";
+@import "./styles/inicio.css";
+@import "./styles/ecossistema.css";
+@import "./styles/avaliacoes.css";
+@import "./styles/duvidas.css";
+@import "./styles/mapa-risco.css";
+@import "./styles/componentes.css";
+@import "./styles/historico.css";
+@import "./styles/planos.css";
+@import "./styles/perfil.css";
+@import "./styles/circulos.css";
+@import "./styles/responsividade.css";
