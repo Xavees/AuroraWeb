@@ -19,7 +19,8 @@ export function PaginaPerfil({
 }: ProfilePageProps) {
   const { usuario, atualizar } = useAutenticacao();
   const [nome, setNome] = useState(usuario?.nome ?? "");
-  const [email, setEmail] = useState(usuario?.email ?? "");
+  const [fotoUrl, setFotoUrl] = useState(usuario?.fotoUrl ?? "");
+  const [fotoComErro, setFotoComErro] = useState(false);
   const [telefone, setTelefone] = useState(usuario?.telefone ?? "");
   const [mensagem, setMensagem] = useState("");
   const [tipoMensagem, setTipoMensagem] = useState<"sucesso" | "erro">(
@@ -29,17 +30,26 @@ export function PaginaPerfil({
 
   async function salvarPerfil(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (salvando) return;
     setSalvando(true);
     setMensagem("");
 
     try {
-      const resposta = await atualizar({ nome, email, telefone });
+      const resposta = await atualizar({
+        nome,
+        ...(telefone !== (usuario?.telefone ?? "")
+          ? { telefone: telefone.replace(/[\s().-]/g, "") }
+          : {}),
+        ...(fotoUrl !== (usuario?.fotoUrl ?? "")
+          ? { fotoUrl: fotoUrl.trim() }
+          : {}),
+      });
       setTipoMensagem("sucesso");
       setMensagem(resposta);
     } catch (erro) {
       setTipoMensagem("erro");
       setMensagem(
-        erro instanceof Error
+        erro instanceof Error && !(erro instanceof TypeError)
           ? erro.message
           : "Não foi possível atualizar o perfil.",
       );
@@ -47,6 +57,19 @@ export function PaginaPerfil({
       setSalvando(false);
     }
   }
+
+  if (!usuario)
+    return (
+      <PageCard
+        title="Meu perfil"
+        subtitle="Entre na sua conta para editar seus dados."
+        icon={<img src={pageIcon} alt="" />}
+      >
+        <button className="primary" onClick={() => navigate("login")}>
+          Entrar
+        </button>
+      </PageCard>
+    );
 
   return (
     <PageCard
@@ -56,10 +79,25 @@ export function PaginaPerfil({
       wide
     >
       <div className="profile-grid">
-        {/* // foto temporaria, a logo nova ja foi escolhida ! */}
         <div className="profile-photo">
-          <span>{usuario?.nome.charAt(0).toUpperCase() ?? "A"}</span>
-          <button>Alterar foto</button>
+          <span>
+            {usuario.fotoUrl && !fotoComErro ? (
+              <img
+                src={usuario.fotoUrl}
+                alt="Sua foto de perfil"
+                referrerPolicy="no-referrer"
+                onError={() => setFotoComErro(true)}
+              />
+            ) : (
+              usuario.nome.charAt(0).toUpperCase()
+            )}
+          </span>
+          <button
+            type="button"
+            onClick={() => document.getElementById("foto-perfil")?.focus()}
+          >
+            Alterar foto
+          </button>
         </div>
         <form className="form compact" onSubmit={salvarPerfil}>
           <Field
@@ -68,22 +106,40 @@ export function PaginaPerfil({
             onChange={(event) => setNome(event.target.value)}
             required
           />
-          <Field
-            label="E-mail"
-            type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            required
-          />
+          <label className="field">
+            <span>E-mail</span>
+            <input type="email" value={usuario.email} readOnly />
+            <small>A alteração de e-mail não está disponível.</small>
+          </label>
           <Field
             label="Telefone"
             type="tel"
             value={telefone}
             onChange={(event) => setTelefone(event.target.value)}
-            required
           />
+          <label className="field">
+            <span>Link da foto</span>
+            <input
+              id="foto-perfil"
+              type="url"
+              value={fotoUrl}
+              maxLength={255}
+              placeholder="https://exemplo.com/minha-foto.jpg"
+              onChange={(event) => {
+                setFotoUrl(event.target.value);
+                setFotoComErro(false);
+              }}
+              aria-describedby="foto-ajuda"
+            />
+            <small id="foto-ajuda">
+              Cole o link HTTPS de uma imagem. O envio de arquivos ainda não
+              está disponível.
+            </small>
+          </label>
           {mensagem && (
-            <p className={`api-message ${tipoMensagem}`}>{mensagem}</p>
+            <p role="status" className={`api-message ${tipoMensagem}`}>
+              {mensagem}
+            </p>
           )}
           <button className="primary" disabled={salvando}>
             {salvando ? "Salvando..." : "Salvar alterações"}

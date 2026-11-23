@@ -16,6 +16,7 @@ export function PaginaLogin({ navigate }: { navigate: Navigate }) {
   // Exibe o resultado da autenticação na própria tela.
   async function enviarLogin(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (carregando) return;
     setCarregando(true);
     setMensagem("");
 
@@ -24,7 +25,7 @@ export function PaginaLogin({ navigate }: { navigate: Navigate }) {
       navigate("profile");
     } catch (erro) {
       setMensagem(
-        erro instanceof Error
+        erro instanceof Error && !(erro instanceof TypeError)
           ? erro.message
           : "Não foi possível acessar a API.",
       );
@@ -57,7 +58,7 @@ export function PaginaLogin({ navigate }: { navigate: Navigate }) {
         />
         <div className="form-between">
           <Check
-            label="Manter conectado"
+            label="Manter conectado neste dispositivo"
             checked={manterConectado}
             onChange={(event) => setManterConectado(event.target.checked)}
           />
@@ -69,7 +70,11 @@ export function PaginaLogin({ navigate }: { navigate: Navigate }) {
             Esqueci a senha
           </button>
         </div>
-        {mensagem && <p className="api-message erro">{mensagem}</p>}
+        {mensagem && (
+          <p className="api-message erro" role="alert">
+            {mensagem}
+          </p>
+        )}
         <button className="primary wide" disabled={carregando}>
           {carregando ? "Entrando..." : "Entrar"}
         </button>

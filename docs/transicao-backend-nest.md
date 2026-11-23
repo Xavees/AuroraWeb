@@ -87,3 +87,28 @@ Variáveis VITE_* são públicas e nunca devem conter credenciais. .env permanec
 Verificações de TypeScript, lint e build devem passar após as renomeações. O cliente HTTP é verificado com respostas simuladas de sucesso, erro Nest e 204; isso não substitui testes contra o Nest e o banco reais.
 
 Para repetir a validação do cliente: `node --test testes/cliente-api.test.mjs`. Para os demais checks: `npm run lint` e `npm run build`.
+
+## Atualização: login conectado
+
+O cadastro foi conectado em etapa posterior à preparação inicial. Agora o login também chama POST /auth/login e, em seguida, GET /usuarios/:id com Bearer. O ID vem de sub do JWT apenas para compor a URL; a autorização e a assinatura são verificadas pelo Nest. A sessão só é ativada depois da consulta autenticada ao perfil.
+
+O token é salvo em sessionStorage por padrão; “Manter conectado” usa localStorage. Nenhuma senha é persistida. Ao recarregar, o perfil é validado novamente no servidor. A expiração considera o menor prazo entre exp e expires_in; não existe renovação automática. Sair remove a sessão local, mas não revoga o JWT no servidor.
+
+Arquivos: services/sessao.ts, services/api/usuariosApi.ts, contexts/ProvedorAutenticacao.tsx e pages/PaginaLogin.tsx. Edição do perfil e integração das outras funcionalidades permanecem pendentes. Para validar os testes locais: node --test testes/*.test.mjs.
+
+Validação manual: entrar com uma conta existente, conferir nome/e-mail no perfil, recarregar e sair; repetir com senha inválida e API indisponível. O teste com credenciais reais deve ser feito pelo usuário; os testes automatizados usam dados simulados.
+
+## Alterações incorporadas dos patches
+
+Os arquivos aurora-web-cadastro.patch e aurora-api-cors.patch foram conferidos e removidos após confirmar que suas alterações já estavam no código. Não é necessário aplicar patches para executar os projetos.
+
+- Frontend: src/pages/PaginaCadastro.tsx contém o formulário integrado; src/services/api/autenticacaoApi.ts envia POST /auth/register.
+- Backend: Aurora_Back-End/aurora-backend/src/main.ts configura app.enableCors antes de app.listen, usando FRONTEND_URL.
+- Endereço da API no frontend: VITE_API_URL no .env local (não versionado).
+
+
+## Atualização: edição de perfil e foto por URL
+
+A tela de perfil agora envia PATCH /usuarios/:id autenticado. Nome: 2–100 caracteres; telefone, quando alterado: 10–15 dígitos com + opcional. Foto: link HTTPS de até 255 caracteres. E-mail é somente leitura porque não integra AtualizarUsuarioDto. Campos opcionais inalterados são omitidos; remover telefone/foto não foi habilitado.
+
+O perfil e a foto são atualizados com a resposta real da API. Imagens inacessíveis exibem a inicial do usuário. Ainda não existe upload de arquivo no backend consultado: selecionar uma foto do computador exige implementar armazenamento e endpoint próprios. Não usamos base64 ou armazenamento local para simular persistência da foto.

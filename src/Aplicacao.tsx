@@ -1,3 +1,4 @@
+import { useAutenticacao } from "./hooks/useAutenticacao";
 import { useEffect, useState } from "react";
 import { Rodape } from "./components/layout/Rodape";
 import { Cabecalho } from "./components/layout/Cabecalho";
@@ -23,6 +24,7 @@ import "./Aplicacao.css";
 
 // Componente principal: controla apenas navegação, tema e estrutura global.
 function Aplicacao() {
+  const { usuario } = useAutenticacao();
   const [screen, setScreen] = useState<Screen>(() => {
     //  substituir esta navegação por React Router.
     const telaSelecionada = window.location.hash.replace("#/", "") as Screen;
@@ -78,6 +80,7 @@ function Aplicacao() {
 
       <main className="main-content">
         <PaginaAtual
+          key={usuario?.id ?? "visitante"}
           screen={screen}
           theme={theme}
           navigate={navigate}

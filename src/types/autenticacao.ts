@@ -5,6 +5,6 @@ export type CredenciaisLogin = {
 
 export type DadosPerfil = {
   nome: string;
-  email: string;
-  telefone: string;
+  telefone?: string;
+  fotoUrl?: string;
 };

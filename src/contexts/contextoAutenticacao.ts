@@ -2,10 +2,11 @@ import { createContext } from "react";
 import type { CredenciaisLogin, DadosPerfil } from "../types/autenticacao";
 
 export type UsuarioSessao = {
-  id: number;
+  id: string;
   nome: string;
   email: string;
   telefone: string;
+  fotoUrl: string | null;
 };
 
 type AutenticacaoContextValue = {
