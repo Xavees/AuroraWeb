@@ -1,0 +1,178 @@
+[
+  {
+    "antes": "src/App.css",
+    "depois": "src/Aplicacao.css"
+  },
+  {
+    "antes": "src/App.tsx",
+    "depois": "src/Aplicacao.tsx"
+  },
+  {
+    "antes": "src/components/home/Ecosystem.tsx",
+    "depois": "src/components/home/Ecossistema.tsx"
+  },
+  {
+    "antes": "src/components/home/GettingStarted.tsx",
+    "depois": "src/components/home/PrimeirosPassos.tsx"
+  },
+  {
+    "antes": "src/components/home/HomeFaq.tsx",
+    "depois": "src/components/home/DuvidasFrequentes.tsx"
+  },
+  {
+    "antes": "src/components/home/Reviews.tsx",
+    "depois": "src/components/home/Avaliacoes.tsx"
+  },
+  {
+    "antes": "src/components/layout/Footer.tsx",
+    "depois": "src/components/layout/Rodape.tsx"
+  },
+  {
+    "antes": "src/components/layout/Header.tsx",
+    "depois": "src/components/layout/Cabecalho.tsx"
+  },
+  {
+    "antes": "src/components/ui/Cards.tsx",
+    "depois": "src/components/ui/Cartoes.tsx"
+  },
+  {
+    "antes": "src/components/ui/FormControls.tsx",
+    "depois": "src/components/ui/ControlesFormulario.tsx"
+  },
+  {
+    "antes": "src/components/ui/ListItems.tsx",
+    "depois": "src/components/ui/ItensLista.tsx"
+  },
+  {
+    "antes": "src/config/homeReviews.ts",
+    "depois": "src/config/avaliacoesInicio.ts"
+  },
+  {
+    "antes": "src/config/homeSteps.ts",
+    "depois": "src/config/etapasInicio.ts"
+  },
+  {
+    "antes": "src/config/screens.ts",
+    "depois": "src/config/telas.ts"
+  },
+  {
+    "antes": "src/contexts/autenticacaoContext.ts",
+    "depois": "src/contexts/contextoAutenticacao.ts"
+  },
+  {
+    "antes": "src/contexts/AutenticacaoProvider.tsx",
+    "depois": "src/contexts/ProvedorAutenticacao.tsx"
+  },
+  {
+    "antes": "src/index.css",
+    "depois": "src/estilosGlobais.css"
+  },
+  {
+    "antes": "src/main.tsx",
+    "depois": "src/principal.tsx"
+  },
+  {
+    "antes": "src/pages/CirclesPage.tsx",
+    "depois": "src/pages/PaginaCirculos.tsx"
+  },
+  {
+    "antes": "src/pages/ContactsPage.tsx",
+    "depois": "src/pages/PaginaContatos.tsx"
+  },
+  {
+    "antes": "src/pages/CreateCirclePage.tsx",
+    "depois": "src/pages/PaginaCriarCirculo.tsx"
+  },
+  {
+    "antes": "src/pages/ForgotPasswordPage.tsx",
+    "depois": "src/pages/PaginaRecuperarSenha.tsx"
+  },
+  {
+    "antes": "src/pages/HistoryPage.tsx",
+    "depois": "src/pages/PaginaHistoricoLocalizacao.tsx"
+  },
+  {
+    "antes": "src/pages/HomePage.tsx",
+    "depois": "src/pages/PaginaInicio.tsx"
+  },
+  {
+    "antes": "src/pages/JoinCirclePage.tsx",
+    "depois": "src/pages/PaginaEntrarCirculo.tsx"
+  },
+  {
+    "antes": "src/pages/LoginPage.tsx",
+    "depois": "src/pages/PaginaLogin.tsx"
+  },
+  {
+    "antes": "src/pages/PlansPage.tsx",
+    "depois": "src/pages/PaginaPlanos.tsx"
+  },
+  {
+    "antes": "src/pages/ProfilePage.tsx",
+    "depois": "src/pages/PaginaPerfil.tsx"
+  },
+  {
+    "antes": "src/pages/RiskMapPage.tsx",
+    "depois": "src/pages/PaginaMapaRisco.tsx"
+  },
+  {
+    "antes": "src/pages/SignupPage.tsx",
+    "depois": "src/pages/PaginaCadastro.tsx"
+  },
+  {
+    "antes": "src/pages/TrustedContactInvitePage.tsx",
+    "depois": "src/pages/PaginaConviteContatoConfianca.tsx"
+  },
+  {
+    "antes": "src/styles/circles.css",
+    "depois": "src/styles/circulos.css"
+  },
+  {
+    "antes": "src/styles/components.css",
+    "depois": "src/styles/componentes.css"
+  },
+  {
+    "antes": "src/styles/ecosystem.css",
+    "depois": "src/styles/ecossistema.css"
+  },
+  {
+    "antes": "src/styles/faq.css",
+    "depois": "src/styles/duvidas.css"
+  },
+  {
+    "antes": "src/styles/history.css",
+    "depois": "src/styles/historico.css"
+  },
+  {
+    "antes": "src/styles/home.css",
+    "depois": "src/styles/inicio.css"
+  },
+  {
+    "antes": "src/styles/layout.css",
+    "depois": "src/styles/estrutura.css"
+  },
+  {
+    "antes": "src/styles/plans.css",
+    "depois": "src/styles/planos.css"
+  },
+  {
+    "antes": "src/styles/profile.css",
+    "depois": "src/styles/perfil.css"
+  },
+  {
+    "antes": "src/styles/responsive.css",
+    "depois": "src/styles/responsividade.css"
+  },
+  {
+    "antes": "src/styles/reviews.css",
+    "depois": "src/styles/avaliacoes.css"
+  },
+  {
+    "antes": "src/styles/risk-map.css",
+    "depois": "src/styles/mapa-risco.css"
+  },
+  {
+    "antes": "src/types/app.ts",
+    "depois": "src/types/aplicacao.ts"
+  }
+]

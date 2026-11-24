@@ -1,5 +1,5 @@
-import { nomesTelas } from "../../config/screens";
-import type { Navigate, Screen } from "../../types/app";
+import { nomesTelas } from "../../config/telas";
+import type { Navigate, Screen } from "../../types/aplicacao";
 
 type PropriedadesSeletorTelas = {
   telaAtual: Screen;

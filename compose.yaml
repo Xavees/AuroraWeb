@@ -1,0 +1,17 @@
+services:
+  web:
+    build: .
+    init: true
+    volumes:
+      - .:/workspaces/aurora-web
+      - web-node-modules:/workspaces/aurora-web/node_modules
+      - web-npm-cache:/home/node/.npm
+    environment:
+      VITE_API_URL: ${VITE_API_URL:-}
+      DOCKER_USE_POLLING: "true"
+    ports:
+      - "${WEB_HOST:-127.0.0.1}:${WEB_PORT:-8080}:5173"
+
+volumes:
+  web-node-modules:
+  web-npm-cache:
