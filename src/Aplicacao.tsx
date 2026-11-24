@@ -1,4 +1,5 @@
 import { useAutenticacao } from "./hooks/useAutenticacao";
+import { telaPermitida } from "./config/acesso";
 import { useEffect, useState } from "react";
 import { Rodape } from "./components/layout/Rodape";
 import { Cabecalho } from "./components/layout/Cabecalho";
@@ -24,12 +25,23 @@ import "./Aplicacao.css";
 
 // Componente principal: controla apenas navegação, tema e estrutura global.
 function Aplicacao() {
-  const { usuario } = useAutenticacao();
-  const [screen, setScreen] = useState<Screen>(() => {
+  const { usuario, estaLogado } = useAutenticacao();
+  const [telaSolicitada, setScreen] = useState<Screen>(() => {
     //  substituir esta navegação por React Router.
-    const telaSelecionada = window.location.hash.replace("#/", "") as Screen;
-    return telaSelecionada in nomesTelas ? telaSelecionada : "home";
+    const telaSelecionada = window.location.hash
+      .replace("#/", "")
+      .split("?")[0] as Screen;
+    return Object.hasOwn(nomesTelas, telaSelecionada)
+      ? telaSelecionada
+      : "home";
   });
+  const screen = telaPermitida(telaSolicitada, estaLogado);
+
+  useEffect(() => {
+    if (screen !== telaSolicitada) {
+      window.history.replaceState(null, "", `#/${screen}`);
+    }
+  }, [screen, telaSolicitada]);
 
   const [theme, setTheme] = useState<Theme>(() => {
     const savedTheme = localStorage.getItem("aurora-theme") as Theme | null;
@@ -50,14 +62,17 @@ function Aplicacao() {
   }, [theme]);
 
   function navigate(nextScreen: Screen) {
-    setScreen(nextScreen);
-    window.location.hash = `/${nextScreen}`;
+    const destino = telaPermitida(nextScreen, estaLogado);
+    setScreen(destino);
+    window.location.hash = `/${destino}`;
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   useEffect(() => {
     function syncScreen() {
-      const nextScreen = window.location.hash.replace("#/", "") as Screen;
+      const nextScreen = window.location.hash
+        .replace("#/", "")
+        .split("?")[0] as Screen;
       setScreen(Object.hasOwn(nomesTelas, nextScreen) ? nextScreen : "home");
       window.scrollTo({ top: 0 });
     }

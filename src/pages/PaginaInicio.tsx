@@ -73,21 +73,6 @@ export function PaginaInicio({
       <PrimeirosPassos />
       <Avaliacoes />
       <DuvidasFrequentes />
-      <section className="home-signup" aria-labelledby="home-signup-title">
-        <span className="eyebrow">FAÇA PARTE DO AURORA</span>
-        <h2 id="home-signup-title">Sua rede de confiança começa com você.</h2>
-        <p>
-          Crie sua conta e dê o primeiro passo para fazer parte do ecossistema
-          Aurora.
-        </p>
-        <button
-          className="primary"
-          type="button"
-          onClick={() => navigate("signup")}
-        >
-          Começar agora
-        </button>
-      </section>
     </div>
   );
 }

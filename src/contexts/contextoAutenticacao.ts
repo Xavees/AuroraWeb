@@ -18,6 +18,7 @@ type AutenticacaoContextValue = {
   ) => Promise<void>;
   atualizar: (dados: DadosPerfil) => Promise<string>;
   enviarFoto: (arquivo: File) => Promise<void>;
+  token: string | null;
   sair: () => void;
 };
 

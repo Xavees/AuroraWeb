@@ -22,7 +22,7 @@ export function PaginaLogin({ navigate }: { navigate: Navigate }) {
 
     try {
       await entrar({ email, senha }, manterConectado);
-      navigate("profile");
+      navigate("home");
     } catch (erro) {
       setMensagem(
         erro instanceof Error && !(erro instanceof TypeError)

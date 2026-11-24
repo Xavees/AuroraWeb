@@ -63,3 +63,92 @@ export function listarMembrosCirculo(
     },
   );
 }
+
+export function atualizarCirculo(id: string, nome: string, token: string) {
+  if (nome.trim().length < 3 || nome.trim().length > 100)
+    throw new Error("Use um nome de 3 a 100 caracteres.");
+  return requisicaoApi<CirculoApi>(`/circulos/${encodeURIComponent(id)}`, {
+    method: "PATCH",
+    token: exigirToken(token),
+    body: JSON.stringify({ nome: nome.trim() }),
+  });
+}
+export function renovarConvite(id: string, token: string) {
+  return requisicaoApi<{ codigoConvite: string }>(
+    `/circulos/${encodeURIComponent(id)}/codigo-convite/renovar`,
+    { method: "POST", token: exigirToken(token) },
+  );
+}
+export function sairCirculo(id: string, token: string) {
+  return requisicaoApi<void>(`/circulos/${encodeURIComponent(id)}/membros/eu`, {
+    method: "DELETE",
+    token: exigirToken(token),
+  });
+}
+export function excluirCirculo(id: string, token: string) {
+  return requisicaoApi<void>(`/circulos/${encodeURIComponent(id)}`, {
+    method: "DELETE",
+    token: exigirToken(token),
+  });
+}
+export function removerMembro(id: string, usuarioId: string, token: string) {
+  return requisicaoApi<void>(
+    `/circulos/${encodeURIComponent(id)}/membros/${encodeURIComponent(usuarioId)}`,
+    { method: "DELETE", token: exigirToken(token) },
+  );
+}
+export function alterarFuncao(
+  id: string,
+  usuarioId: string,
+  funcao: MembroCirculoApi["funcao"],
+  token: string,
+) {
+  return requisicaoApi<void>(
+    `/circulos/${encodeURIComponent(id)}/membros/${encodeURIComponent(usuarioId)}/funcao`,
+    {
+      method: "PATCH",
+      token: exigirToken(token),
+      body: JSON.stringify({ funcao }),
+    },
+  );
+}
+export function desbloquearMembro(
+  id: string,
+  usuarioId: string,
+  token: string,
+) {
+  if (!/^[1-9]\d*$/.test(usuarioId))
+    throw new Error("Informe um ID de usuário válido.");
+  return requisicaoApi<void>(
+    `/circulos/${encodeURIComponent(id)}/bloqueios/${encodeURIComponent(usuarioId)}`,
+    { method: "DELETE", token: exigirToken(token) },
+  );
+}
+
+export function buscarCirculo(id: string, token: string, signal?: AbortSignal) {
+  return requisicaoApi<CirculoApi>(`/circulos/${encodeURIComponent(id)}`, {
+    token: exigirToken(token),
+    signal,
+  });
+}
+
+export function desbloquearMembroPorEmail(
+  id: string,
+  email: string,
+  token: string,
+) {
+  const normalizado = email.trim().toLowerCase();
+  if (
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizado) ||
+    normalizado.length > 100
+  )
+    throw new Error("Informe um e-mail válido.");
+  return requisicaoApi<void>(
+    `/circulos/${encodeURIComponent(id)}/bloqueios/desbloquear-por-email`,
+    {
+      method: "POST",
+      token: exigirToken(token),
+      body: JSON.stringify({ email: normalizado }),
+    },
+  );
+}

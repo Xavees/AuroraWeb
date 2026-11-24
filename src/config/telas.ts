@@ -10,7 +10,7 @@ export const nomesTelas: Record<Screen, string> = {
   contacts: "Contatos de confiança",
   "trusted-contact-invite": "Convite de contato de confiança",
   history: "Histórico de localização",
-  circles: "Meus círculos",
+  circles: "Círculos",
   "join-circle": "Código para entrar no círculo",
   "create-circle": "Criar círculo",
   plans: "Planos",

@@ -146,3 +146,14 @@
 .toggle-row input:checked + i::after {
   transform: translateX(18px);
 }
+
+.history-record-data { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.history-record-data > button { margin-top: 12px; }
+.history-icon { flex-shrink: 0; }
+.history-pagination { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px; margin-top: 24px; }
+.history-details { margin-top: 16px; padding: 20px; border: 1px solid var(--color-border); border-radius: 14px; background: var(--color-background); }
+.history-details dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin: 0 0 20px; }
+.history-details dt { color: var(--color-muted); font-size: 0.85rem; }
+.history-details dd { margin: 6px 0 0; }
+.history-details a { display: inline-block; text-decoration: none; }
+@media (max-width: 600px) { .history-details dl { grid-template-columns: 1fr; } }

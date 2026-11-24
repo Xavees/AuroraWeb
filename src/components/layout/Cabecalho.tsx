@@ -12,6 +12,8 @@ type HeaderProps = {
 // Cabeçalho global com atalhos de autenticação, perfil e tema.
 export function Cabecalho({ navigate, screen, theme, toggleTheme }: HeaderProps) {
   const { usuario, estaLogado, sair } = useAutenticacao();
+  const foto = enderecoFoto(usuario?.fotoUrl ?? null);
+  const [fotoComErro, setFotoComErro] = useState<string | null>(null);
 
   function encerrarSessao() {
     sair();
@@ -52,7 +54,9 @@ export function Cabecalho({ navigate, screen, theme, toggleTheme }: HeaderProps)
           <>
             <button className="header-user" onClick={() => navigate("profile")}>
               <span className="header-avatar">
-                {usuario.nome.charAt(0).toUpperCase()}
+                {foto && foto !== fotoComErro ? (
+                  <img src={foto} alt="" referrerPolicy="no-referrer" onError={() => setFotoComErro(foto)} />
+                ) : usuario.nome.charAt(0).toUpperCase()}
               </span>
               <span>{usuario.nome}</span>
             </button>
@@ -87,3 +91,5 @@ export function Cabecalho({ navigate, screen, theme, toggleTheme }: HeaderProps)
     </header>
   );
 }
+import { useState } from "react";
+import { enderecoFoto } from "../../services/api/usuariosApi";

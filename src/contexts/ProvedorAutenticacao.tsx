@@ -159,6 +159,7 @@ export function ProvedorAutenticacao({ children }: { children: ReactNode }) {
     <AutenticacaoContext.Provider
       value={{
         usuario,
+        token: sessao?.token ?? null,
         estaLogado: !!usuario && !!sessao,
         entrar,
         atualizar,

@@ -1,3 +1,5 @@
+import { useAutenticacao } from "../hooks/useAutenticacao";
+import { criarCirculo } from "../services/api/circulosApi";
 import { useState } from "react";
 import { AuthCard } from "../components/ui/Cartoes";
 import type { Navigate } from "../types/aplicacao";
@@ -5,6 +7,8 @@ import type { Navigate } from "../types/aplicacao";
 export function PaginaCriarCirculo({ navigate }: { navigate: Navigate }) {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
+  const [enviando, setEnviando] = useState(false);
+  const { token } = useAutenticacao();
 
   return (
     <AuthCard
@@ -13,18 +17,24 @@ export function PaginaCriarCirculo({ navigate }: { navigate: Navigate }) {
     >
       <form
         className="form"
-        onSubmit={(event) => {
+        onSubmit={async (event) => {
           event.preventDefault();
-          const nome = name.trim();
-          if (nome.length < 3 || nome.length > 100) {
-            setMessage("O nome deve ter entre 3 e 100 caracteres.");
-            return;
+          if (enviando) return;
+          setEnviando(true);
+          setMessage("");
+          try {
+            if (!token) throw new Error("Entre novamente na sua conta.");
+            await criarCirculo(name.trim(), token);
+            navigate("circles");
+          } catch (erro) {
+            setMessage(
+              erro instanceof Error && !(erro instanceof TypeError)
+                ? erro.message
+                : "Não foi possível acessar os círculos. Tente novamente.",
+            );
+          } finally {
+            setEnviando(false);
           }
-          // Contrato Aurora: POST /circulos, { nome }, com autenticação JWT.
-          // O servidor define o administrador e gera o código de convite.
-          setMessage(
-            "A criação de círculos ainda não está disponível. Nenhum círculo foi criado. Tente novamente quando o serviço estiver disponível.",
-          );
         }}
       >
         <label className="field">
@@ -56,7 +66,7 @@ export function PaginaCriarCirculo({ navigate }: { navigate: Navigate }) {
             pessoas de confiança.
           </p>
         </div>
-        <button className="primary wide" type="submit">
+        <button className="primary wide" type="submit" disabled={enviando}>
           Criar círculo
         </button>
         {message && <p role="status">{message}</p>}

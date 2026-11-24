@@ -1,3 +1,5 @@
+import { useAutenticacao } from "../hooks/useAutenticacao";
+import { entrarNoCirculo } from "../services/api/circulosApi";
 import { useState } from "react";
 import { AuthCard } from "../components/ui/Cartoes";
 import type { Navigate } from "../types/aplicacao";
@@ -5,21 +7,34 @@ import type { Navigate } from "../types/aplicacao";
 export function PaginaEntrarCirculo({ navigate }: { navigate: Navigate }) {
   const [code, setCode] = useState("");
   const [message, setMessage] = useState("");
+  const [enviando, setEnviando] = useState(false);
+  const { token } = useAutenticacao();
 
   return (
     <AuthCard
       title="Entre no seu círculo"
-      subtitle="Você ainda não participa de um círculo. Peça o código de convite a alguém do grupo para se conectar."
+      subtitle="Peça o código de convite a alguém do grupo para se conectar."
     >
       <form
         className="form"
-        onSubmit={(event) => {
+        onSubmit={async (event) => {
           event.preventDefault();
-          setMessage(
-            code.trim()
-              ? "A entrada por código ainda não está disponível. Nenhum círculo foi vinculado à sua conta."
-              : "Informe o código de convite.",
-          );
+          if (enviando) return;
+          setEnviando(true);
+          setMessage("");
+          try {
+            if (!token) throw new Error("Entre novamente na sua conta.");
+            await entrarNoCirculo(code.trim().toUpperCase(), token);
+            navigate("circles");
+          } catch (erro) {
+            setMessage(
+              erro instanceof Error && !(erro instanceof TypeError)
+                ? erro.message
+                : "Não foi possível acessar os círculos. Tente novamente.",
+            );
+          } finally {
+            setEnviando(false);
+          }
         }}
       >
         <label className="field">
@@ -41,7 +56,7 @@ export function PaginaEntrarCirculo({ navigate }: { navigate: Navigate }) {
         <p id="circle-code-help">
           Use o código compartilhado por um participante do círculo.
         </p>
-        <button className="primary wide" type="submit">
+        <button className="primary wide" type="submit" disabled={enviando}>
           Entrar no círculo
         </button>
         <button

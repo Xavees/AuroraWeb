@@ -49,7 +49,7 @@ export function FotoPerfil() {
           usuario?.nome.charAt(0).toUpperCase()
         )}
       </span>
-      <label className="link">
+      <label className={`secondary photo-picker${enviando ? " disabled" : ""}`}>
         Escolher foto
         <input
           aria-label="Escolher foto"
@@ -76,6 +76,7 @@ export function FotoPerfil() {
           }}
         />
       </label>
+      {arquivo && <small className="photo-filename">{arquivo.name}</small>}
       <small>JPG, PNG ou WebP · até 5 MB</small>
       {arquivo && (
         <>
